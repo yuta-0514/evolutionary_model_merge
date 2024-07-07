@@ -1,4 +1,5 @@
 # Evolutionary Model Merge
+[Evolutionary Optimization of Model Merging Recipes](https://sakana.ai/evolutionary-model-merge-jp/)
 
 ### Install Libraries
 ```
@@ -28,4 +29,7 @@ mergekit-yaml evol_merge_storage/best_config.yaml merge
 ```
 Python test.py
 ```
-
+### Citation
+- https://acro-engineer.hatenablog.com/entry/2024/05/07/124507
+- https://note.com/npaka/n/n42129c043026
+- https://github.com/openai/simple-evals/tree/main
