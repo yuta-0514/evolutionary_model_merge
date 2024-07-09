@@ -4,7 +4,7 @@ device = "cuda" # the device to load the model onto
 
 # merge前
 # model_id = "evol_merge_storage/input_models/shisa-gamma-7b-v1_4025154171"
-model_id = "merge_mgsm_train_add_answer"
+model_id = "merge_mgsm_train"
 model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
 tokenizer = AutoTokenizer.from_pretrained(model_id)
 
