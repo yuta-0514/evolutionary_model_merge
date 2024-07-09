@@ -37,7 +37,7 @@ Question: 次の数学の問題を解いてください。最終的な答えを�
 ```
 | Base Model(augmxnt/shisa-gamma-7b-v1) | Source(WizardLMTeam/WizardMath-7B-V1.1 ) | Merge Model |
 | -- | -- | -- |
-| 彼女は毎日8ドル手に入れています。 | 首尾connect. 1日16個卵生み、3個消費、4個マフィン焼き、市場で1個あたり2ドル売り、16-3-4=9個市場で売ります。 9個卵1日売るので、9*2=18ドル手に入れます。 18 The answer is: 18. | 16 - 3 - 4 = 9 9 x 2 = 18 The answer is: 18. |
+| 彼女は毎日8ドル手に入れています。 | 首尾connect. 1日16個卵生み、3個消費、4個マフィン焼き、市場で1個あたり2ドル売り、16-3-4=9個市場で売ります。 9個卵1日売るので、9*2=18ドル手に入れます。 18 The answer is: 18. | Let's think step by step.First, we need to find out how many eggs are left after Janet's personal consumption and baking for her friends. Janet eats 3 eggs for breakfast every day, and she bakes 4 eggs worth of muffins for her friends every day. So, the total number of eggs she uses for personal consumption and baking is 3 + 4 = 7 eggs per day. Now, we know that Janet lays 16 eggs per day. So, the number of eggs left after her personal consumption and baking is 16 |
 
 ### Citation
 - https://acro-engineer.hatenablog.com/entry/2024/05/07/124507
@@ -45,9 +45,9 @@ Question: 次の数学の問題を解いてください。最終的な答えを�
 - https://github.com/openai/simple-evals/tree/main
 
 ### TODO
-#### Trainデータ(8件)
+#### Train(8件)
 - 2値スコア(acc:0のまま進めるとどうなるかを確認)
 
-#### Train+Testデータ
+#### Train+Testの一部
 - 2値スコア
-- Trainの8件のみanswerを使う
+- Trainの8件のみanswerを使用
