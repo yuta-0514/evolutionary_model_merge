@@ -43,3 +43,11 @@ Question: 次の数学の問題を解いてください。最終的な答えを�
 - https://acro-engineer.hatenablog.com/entry/2024/05/07/124507
 - https://note.com/npaka/n/n42129c043026
 - https://github.com/openai/simple-evals/tree/main
+
+### TODO
+#### Trainデータ(8件)
+- 2値スコア(acc:0のまま進めるとどうなるかを確認)
+
+#### Train+Testデータ
+- 2値スコア
+- Trainの8件のみanswerを使う
