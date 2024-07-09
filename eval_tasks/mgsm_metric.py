@@ -1,17 +1,13 @@
-def build_prompt(question):
-    template = [
-        {"role": "user", "content": f"Question:{question}"},
-        {"role": "user", "content": "Answer:"},
-    ]
-    return template
- 
-# プロンプトの生成
-def generate_prompt(doc):
-    prompt = build_prompt(doc["question"])
-    return prompt
+def score_mgsm_binary(pred, question, answer_number, answer) -> bool:
+    if "." in pred:
+        pred = pred.rstrip("0").rstrip(".")
+    pred = pred.replace(",", "")
+    if str(answer_number) == pred:
+        return 1
+    else:
+        return 0
 
-# 評価
-def evaluate(pred, question, answer_number, answer):
+def score_mgsm(pred, question, answer_number, answer):
     pred = pred.replace(".", "")
     try:
         if int(pred) == answer_number:
@@ -25,7 +21,6 @@ def evaluate(pred, question, answer_number, answer):
     except ValueError:
         return 0.
 
-# スコアの計算
 def process_results(doc, results):
-    score = evaluate(results[0], doc["question"], doc["answer_number"], doc["answer"])
+    score = score_mgsm_binary(results[0], doc["question"], doc["answer_number"], doc["answer"])
     return {"acc": score}

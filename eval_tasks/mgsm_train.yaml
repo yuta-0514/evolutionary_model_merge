@@ -8,7 +8,7 @@ output_type: generate_until
 training_split: null
 test_split: train
 # doc_to_text プロンプト生成
-doc_to_text: "次の数学の問題を解いてください。最終的な答えを出す前に、解答の推論過程を記述してください。答えには整数の答え以外何も追加しないでください。\n問題:{{question}}\n{{answer}}答え:"
+doc_to_text: "次の数学の問題を解いてください。最終的な答えを出す前に、解答の推論過程を記述してください。答えには整数の答え以外何も追加しないでください。\n問題:{{question}}\n答え:"
 doc_to_target: ""
 #process_results スコア計算
 process_results: !function mgsm_metric.process_results
