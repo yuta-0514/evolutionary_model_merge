@@ -2,10 +2,10 @@ genome:
     models:
       - WizardLMTeam/WizardMath-7B-V1.1
       - GAIR/Abel-7B-002
-    merge_method: task_arithmetic
+    merge_method: dare_ties
     base_model: augmxnt/shisa-gamma-7b-v1
-    layer_granularity: 8 # sane default
-    allow_negative_weights: true # useful with task_arithmetic
+    layer_granularity: 8
+    allow_negative_weights: true
 tasks:
   - name: mgsm_train
     weight: 1.0
