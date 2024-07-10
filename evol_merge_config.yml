@@ -1,7 +1,7 @@
 genome:
     models:
       - WizardLMTeam/WizardMath-7B-V1.1
-      # - GAIR/Abel-7B-002
+      - GAIR/Abel-7B-002
     merge_method: task_arithmetic
     base_model: augmxnt/shisa-gamma-7b-v1
     layer_granularity: 8 # sane default
