@@ -8,9 +8,6 @@ cd mergekit
 pip install -e .[evolve]
 ```
 
-## Dataset
-[MGSM](https://huggingface.co/datasets/juletxara/mgsm)
-
 ## Model Merge
 ```
 mergekit-evolve ./evol_merge_config.yml \
@@ -27,16 +24,16 @@ mergekit-yaml evol_merge_storage/best_config.yaml merge
 
 ## Evaluate
 ```
-Python eval_mgsm.py
+Python eval_mgsm.py -model_id <YOUR MODEL>
 ```
 
-| Model | Type | Size | MGSM-JA |
-| -- | -- | -- | -- |
-| Shisa Gamma 7B v1 | JA general | 7B |  |
-| WizardMath 7B v1.1 | EN math | 7B |  |
-| Abel 7B 002 | EN math | 7B |  |
-| EvoLLM-JP |  |  |  |
-| Merged Model | 1+2+3 | 7B |  |
+| ID | Model | Type | Size | [MGSM-JA](https://huggingface.co/datasets/juletxara/mgsm)(acc↑) |
+| -- | -- | -- | -- | -- |
+| 1 | [Shisa Gamma 7B v1](https://huggingface.co/augmxnt/shisa-gamma-7b-v1) | JA general | 7B | 6.4 |
+| 2 | [WizardMath 7B v1.1](https://huggingface.co/WizardLMTeam/WizardMath-7B-V1.1) | EN math | 7B |  |
+| 3 | [Abel 7B 002](https://huggingface.co/GAIR/Abel-7B-002) | EN math | 7B |  |
+| 4 | [EvoLLM-JP](https://huggingface.co/SakanaAI/EvoLLM-JP-v1-7B) |  | 7B |  |
+| 5 | Merged Model | 1+2+3 | 7B |  |
 
 ## Citation
 - https://sakana.ai/evolutionary-model-merge-jp/
@@ -56,6 +53,3 @@ Python eval_mgsm.py
 - Train+Testの一部を使用、Trainの8件のみanswerを入れる
 - 生成文に英語が残る場合 → MTBenchをタスクに導入
 - MGSMスコアを算出
- - augmxnt/shisa-gamma-7b-v1
- - WizardLMTeam/WizardMath-7B-V1.1
- - GAIR/Abel-7B-002
