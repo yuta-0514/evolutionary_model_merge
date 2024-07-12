@@ -1,4 +1,5 @@
 import re
+import argparse
 
 from transformers import AutoTokenizer, AutoModelForCausalLM
 import datasets
@@ -22,13 +23,12 @@ def score_mgsm(pred, answer_number) -> bool:
         return 0
 
 
-def main():
-    df = datasets.load_dataset("juletxara/mgsm")
+def main(args):
+    df = datasets.load_dataset("juletxara/mgsm", "ja")
     df = df["test"]
 
-    model_id = "merge_mgsm_train"
-    model = AutoModelForCausalLM.from_pretrained(model_id, device_map="auto")
-    tokenizer = AutoTokenizer.from_pretrained(model_id)
+    model = AutoModelForCausalLM.from_pretrained(args.model_id, device_map="auto")
+    tokenizer = AutoTokenizer.from_pretrained(args.model_id)
 
     cnt = 0
     for i in range(len(df)):
@@ -37,7 +37,7 @@ def main():
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
         tokens = model.generate(
             **inputs,
-            max_new_tokens=128,
+            max_new_tokens=256,
             temperature=0.0,
             top_p=1.0,
             do_sample=False,
@@ -49,4 +49,12 @@ def main():
         except IndexError:
             score = 0
         cnt += score
+        print(i)
     print(cnt/len(df))        
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--model_id")
+    args = parser.parse_args()
+    main(args)
