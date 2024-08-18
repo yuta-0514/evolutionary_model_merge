@@ -24,33 +24,31 @@ def score_mgsm(pred, answer_number) -> bool:
 
 
 def main(args):
-    df = datasets.load_dataset("juletxara/mgsm", "ja")
-    df = df["test"]
-
+    ds = datasets.load_dataset("juletxara/mgsm", "ja")
+    ds = ds["test"]
     model = AutoModelForCausalLM.from_pretrained(args.model_id, device_map="auto")
     tokenizer = AutoTokenizer.from_pretrained(args.model_id)
 
     cnt = 0
-    for i in range(len(df)):
-        question = df["question"][i]
+    for i in range(len(ds)):
+        question = ds["question"][i]
         prompt = f"次の数学の問題を解いてください。最終的な答えを出す前に、解答の推論過程を記述してください。答えには整数の答え以外何も追加しないでください。\n問題:{question}\n答え:"
         inputs = tokenizer(prompt, return_tensors="pt").to("cuda")
         tokens = model.generate(
-            **inputs,
-            max_new_tokens=256,
-            temperature=0.0,
-            top_p=1.0,
-            do_sample=False,
+        **inputs,
+        max_new_tokens=2048,
+        temperature=0.75,
+        top_p=0.95,
+        do_sample=True,
         )
         output = tokenizer.decode(tokens[0], skip_special_tokens=True)
         try:
             pred = extract_regex(output)[-1]
-            score = score_mgsm(pred, df["answer_number"][i])
+            score = score_mgsm(pred, ds["answer_number"][i])
         except IndexError:
             score = 0
         cnt += score
-        print(i)
-    print(cnt/len(df))        
+        print(f"Index{i}:{cnt/len(ds)}")        
 
 
 if __name__ == "__main__":
