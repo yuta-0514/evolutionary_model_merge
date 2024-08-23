@@ -42,11 +42,13 @@ Python eval_mgsm.py -model_id <YOUR MODEL>
 | 4 | [EvoLLM-JP](https://huggingface.co/SakanaAI/EvoLLM-JP-v1-7B) |  | 7B | 41.2 |
 | 5 | Merged Model | 1+2+3 | 7B | 30.8 |
 
----
-| Only Train | Train + Test |
+### Using part of test data for model merge
+
+| Only Train（8 data） | Train + Test（8+100 data） |
 | -- | -- |
 | 34.7 | 22.7 |
 
+　* Accuracy of remaining test data
 
 ## Citation
 - https://sakana.ai/evolutionary-model-merge-jp/
